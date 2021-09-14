@@ -8,8 +8,6 @@ data.sort(function(a, b) {
 // Slice the first 10 objects for plotting
 data = data.slice(0, 10);
 
-console.log(data)
-
 // Reverse the array due to Plotly's defaults
 data = data.reverse();
 
