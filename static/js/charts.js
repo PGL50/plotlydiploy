@@ -88,8 +88,8 @@ function buildCharts(sample) {
     // 7. Create the yticks for the bar chart.
     // Hint: Get the the top 10 otu_ids and map them in descending order  
     //  so the otu_ids with the most bacteria are last. 
-    // var test = selectedSample[0].slice(0,10).map(sampleObj => sampleObj.otu_ids).reverse() ;
-    // console.log(test)
+
+    // yticks = 
 
     top10Id = otuId[0].slice(0,10).reverse()
     // console.log(top10Id)
@@ -112,7 +112,6 @@ function buildCharts(sample) {
 
     barData=[trace1] ;
 
-    // ];
     // // 9. Create the layout for the bar chart. 
     var barLayout = {
       title: "Top 10 Bacteria Cultures Found",
@@ -121,18 +120,53 @@ function buildCharts(sample) {
     };
   //   // 10. Use Plotly to plot the data with the layout. 
   Plotly.newPlot("bar", barData, barLayout);
-  });
-}
+
+// 1. Create the trace for the bubble chart.
+var trace2 = 
+  {   x: otuId[0],
+      y: sampleValue[0],
+      mode: 'markers',
+      text: otuLabel[0],
+      marker: {
+        color: otuId[0],
+        opacity: 0.6,
+        size: sampleValue[0]
+          }
+    } ;
+
+    var bubbleData = [trace2];
+  
+  // 2. Create the layout for the bubble chart.
+    var bubbleLayout = {
+        title: "Bacteria Cultures per Sample",
+        xaxis: { title: {text: 'OTU ID'}}
+    };
+  
+      // 3. Use Plotly to plot the data with the layout.
+    Plotly.newPlot("bubble", bubbleData, bubbleLayout); 
 
 
+    // var trace1 = {
+    //   x: [1, 2, 3, 4],
+    //   y: [10, 11, 12, 13],
+    //   text: ['A<br>size: 40', 'B<br>size: 60', 'C<br>size: 80', 'D<br>size: 100'],
+    //   mode: 'markers',
+    //   marker: {
+    //     color: ['rgb(93, 164, 214)', 'rgb(255, 144, 14)',  'rgb(44, 160, 101)', 'rgb(255, 65, 54)'],
+    //     size: [40, 60, 80, 100]
+    //   }
+    // };
+    
+    // var data = [trace1];
+    
+    // var layout = {
+    //   title: 'Bubble Chart Hover Text',
+    //   showlegend: false,
+    //   height: 600,
+    //   width: 600
+    // };
+    
+    // Plotly.newPlot('bubble', data, layout);
 
-
-
-// // Sort the data by Greek search results
-// var sortedByGreekSearch = data.sort((a, b) => b.greekSearchResults - a.greekSearchResults);
-
-// // Slice the first 10 objects for plotting
-// slicedData = sortedByGreekSearch.slice(0, 10);
-
-// // Reverse the array to accommodate Plotly's defaults
-// reversedData = slicedData.reverse();
+  
+  })};
