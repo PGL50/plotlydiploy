@@ -82,7 +82,7 @@ function buildCharts(sample) {
     
     // console.log(otuId) ;
     // console.log(otuLabel) ;
-    console.log(sampleValue) ;
+    // console.log(sampleValue) ;
 
 
     // 7. Create the yticks for the bar chart.
@@ -92,11 +92,11 @@ function buildCharts(sample) {
     // console.log(test)
 
     top10Id = otuId[0].slice(0,10).reverse()
-    console.log(top10Id)
+    // console.log(top10Id)
     top10Label = otuLabel[0].slice(0,10).reverse()
-    console.log(top10Label)
+    // console.log(top10Label)
     top10Value = sampleValue[0].slice(0,10).reverse()
-    console.log(top10Value)
+    // console.log(top10Value)
 
     // // 8. Create the trace for the bar chart. 
 
