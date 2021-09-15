@@ -69,10 +69,10 @@ function buildCharts(sample) {
     // 4. Create a variable that filters the samples for the object with the desired sample number.
     var selectedSample = samples.filter(sampleObj => sampleObj.id == sample);
   
-    // console.log(selectedSample) ;
+    console.log(selectedSample) ;
 
     //  5. Create a variable that holds the first sample in the array.
-    var firstSample = samples[0];
+    // var firstSample = samples[0];
     // console.log(firstSample) ;
 
     // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
@@ -80,38 +80,47 @@ function buildCharts(sample) {
     otuLabel = selectedSample.map(sampleObj => sampleObj.otu_labels);
     sampleValue = selectedSample.map(sampleObj => sampleObj.sample_values);
     
-    console.log(otuId) ;
-    console.log(otuLabel) ;
+    // console.log(otuId) ;
+    // console.log(otuLabel) ;
     console.log(sampleValue) ;
 
 
     // 7. Create the yticks for the bar chart.
     // Hint: Get the the top 10 otu_ids and map them in descending order  
     //  so the otu_ids with the most bacteria are last. 
+    // var test = selectedSample[0].slice(0,10).map(sampleObj => sampleObj.otu_ids).reverse() ;
+    // console.log(test)
 
+    top10Id = otuId[0].slice(0,10).reverse()
+    console.log(top10Id)
+    top10Label = otuLabel[0].slice(0,10).reverse()
+    console.log(top10Label)
+    top10Value = sampleValue[0].slice(0,10).reverse()
+    console.log(top10Value)
 
     // // 8. Create the trace for the bar chart. 
 
-    var trace1 = [
+    var trace1 = 
       {
-        x: selectedSample.map(sampleObj => sampleObj.sample_values), 
-        y: selectedSample.map(sampleObj => sampleObj.otu_labels),
-        text: otuLabel,
+        x: top10Value, 
+        y: toString(top10Id),
+        text: top10Label,
         type: "bar" ,
         orientation: "h"
 
-    } ];
+    } ;
 
-    data=[trace1] ;
+    barData=[trace1] ;
 
     // ];
     // // 9. Create the layout for the bar chart. 
-    var layout = {
+    var barLayout = {
       title: "This will never work",
+      yaxis : {text: `OTU ${top10Id}`}
      
     };
   //   // 10. Use Plotly to plot the data with the layout. 
-  Plotly.newPlot("bar", data, layout);
+  Plotly.newPlot("bar", barData, barLayout);
   });
 }
 
