@@ -103,12 +103,12 @@ function buildCharts(sample) {
     var trace1 = 
       {
         x: top10Value, 
-        // y: toString(top10Id),
-        y: text(`OTU : ${top10Id}`)
+        y: toString(top10Id),
+        // y: text(`OTU : ${top10Id}`),
         text: top10Label,
         type: "bar" ,
-        orientation: "h"
-
+        orientation: "h",
+        
     } ;
 
     barData=[trace1] ;
