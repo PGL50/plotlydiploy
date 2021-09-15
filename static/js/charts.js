@@ -115,7 +115,7 @@ function buildCharts(sample) {
     // ];
     // // 9. Create the layout for the bar chart. 
     var barLayout = {
-      title: "This will never work",
+      title: "Top 10 Bacteria Cultures Found",
       yaxis : {text: `OTU ${top10Id}`}
      
     };
