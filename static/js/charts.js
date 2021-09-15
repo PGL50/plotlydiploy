@@ -145,28 +145,38 @@ var trace2 =
       // 3. Use Plotly to plot the data with the layout.
     Plotly.newPlot("bubble", bubbleData, bubbleLayout); 
 
+    var metadata = data.metadata;
+    var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
+    var result = resultArray[0];
+    console.log(result);  
+    // 4. Create the trace for the gauge chart.
 
-    // var trace1 = {
-    //   x: [1, 2, 3, 4],
-    //   y: [10, 11, 12, 13],
-    //   text: ['A<br>size: 40', 'B<br>size: 60', 'C<br>size: 80', 'D<br>size: 100'],
-    //   mode: 'markers',
-    //   marker: {
-    //     color: ['rgb(93, 164, 214)', 'rgb(255, 144, 14)',  'rgb(44, 160, 101)', 'rgb(255, 65, 54)'],
-    //     size: [40, 60, 80, 100]
-    //   }
-    // };
+var trace3 = 
+  { domain: { x: [0, 1], y: [0, 1] },
+    value: result.wfreq, 
+    title: { text: "Belly Button Washing Frequency" },
+		type: "indicator",
+		mode: "gauge+number", 
+    gauge: {
+      axis: { range: [null, 10] },
+      bar: { color: "black" },
+      steps: [
+        { range: [0, 2], color: "red" },
+        { range: [2, 4], color: "orange" },
+        { range: [4, 6], color: "yellow" },
+        { range: [6, 8], color: "#4CBB17" },
+        { range: [8, 10], color: "#3F704D" }
+      ]
+    }
+}
+
+    var gaugeData = [trace3];
     
-    // var data = [trace1];
-    
-    // var layout = {
-    //   title: 'Bubble Chart Hover Text',
-    //   showlegend: false,
-    //   height: 600,
-    //   width: 600
-    // };
-    
-    // Plotly.newPlot('bubble', data, layout);
+//     // 5. Create the layout for the gauge chart.
+    var gaugeLayout = { width: 600, height: 500, margin: { t: 0, b: 0 } };
+
+//     // 6. Use Plotly to plot the gauge data and layout.
+    Plotly.newPlot("gauge", gaugeData, gaugeLayout);
 
   
   })};
