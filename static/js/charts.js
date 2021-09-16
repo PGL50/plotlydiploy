@@ -112,13 +112,11 @@ function buildCharts(sample) {
     var trace1 = 
       {
         x: top10Value, 
-        // y: top10Id,
-        // y: toString(top10Id),
         y: topIdLabel,
         text: top10Label,
         type: "bar" ,
-        orientation: "h"
-        
+        orientation: "h",
+        hoverinfo: 'none'
     } ;
 
     barData=[trace1] ;
