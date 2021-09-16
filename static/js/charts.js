@@ -69,7 +69,7 @@ function buildCharts(sample) {
     // 4. Create a variable that filters the samples for the object with the desired sample number.
     var selectedSample = samples.filter(sampleObj => sampleObj.id == sample);
   
-    console.log(selectedSample) ;
+    // console.log(selectedSample) ;
 
     //  5. Create a variable that holds the first sample in the array.
     // var firstSample = samples[0];
@@ -93,6 +93,15 @@ function buildCharts(sample) {
 
     top10Id = otuId[0].slice(0,10).reverse()
     // console.log(top10Id)
+
+
+  // Add OTU to the ID's for bar chart label
+    topIdLabel = [] ;
+    for (var i = 0; i < top10Id.length; i++){
+      topIdLabel[i] = "OTU " + top10Id[i]
+    }
+    // console.log(topIdLabel)
+
     top10Label = otuLabel[0].slice(0,10).reverse()
     // console.log(top10Label)
     top10Value = sampleValue[0].slice(0,10).reverse()
@@ -103,11 +112,12 @@ function buildCharts(sample) {
     var trace1 = 
       {
         x: top10Value, 
-        y: toString(top10Id),
-        // y: text(`OTU : ${top10Id}`),
+        // y: top10Id,
+        // y: toString(top10Id),
+        y: topIdLabel,
         text: top10Label,
         type: "bar" ,
-        orientation: "h",
+        orientation: "h"
         
     } ;
 
@@ -130,8 +140,9 @@ var trace2 =
       text: otuLabel[0],
       marker: {
         color: otuId[0],
-        opacity: 0.6,
-        size: sampleValue[0]
+        opacity: 0.5,
+        size: sampleValue[0],
+        colorscale : 'Rainbow'
           }
     } ;
 
@@ -149,27 +160,28 @@ var trace2 =
     var metadata = data.metadata;
     var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
     var result = resultArray[0];
-    console.log(result);  
+    // console.log(result);  
+
     // 4. Create the trace for the gauge chart.
 
-var trace3 = 
-  { domain: { x: [0, 1], y: [0, 1] },
-    value: result.wfreq, 
-    title: { text: "Belly Button Washing Frequency" },
-		type: "indicator",
-		mode: "gauge+number", 
-    gauge: {
-      axis: { range: [null, 10] },
-      bar: { color: "black" },
-      steps: [
-        { range: [0, 2], color: "red" },
-        { range: [2, 4], color: "orange" },
-        { range: [4, 6], color: "yellow" },
-        { range: [6, 8], color: "#4CBB17" },
-        { range: [8, 10], color: "#3F704D" }
-      ]
-    }
-}
+  var trace3 = 
+    { domain: { x: [0, 1], y: [0, 1] },
+      value: result.wfreq, 
+      title: { text: "<b>Belly Button Washing Frequency<b> <br><sup>Scrubs per Week</sup>"},
+      type: "indicator",
+      mode: "gauge+number", 
+      gauge: {
+        axis: { range: [null, 10] },
+        bar: { color: "black" },
+        steps: [
+          { range: [0, 2], color: "red" },
+          { range: [2, 4], color: "orange" },
+          { range: [4, 6], color: "yellow" },
+          { range: [6, 8], color: "#4CBB17" },
+          { range: [8, 10], color: "#3F704D" }
+        ]
+      }
+  }
 
     var gaugeData = [trace3];
     
