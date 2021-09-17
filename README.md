@@ -1,1 +1,3 @@
-# plotlydiploy
+# Overview of the Belly Button Biodiversity Dashboard
+
+### For this module, and interactive dashboard was created. This used new skills in Javascript, Plotly and D3. The data for the dashboard was in a .jason file.The bacteria obtained from different human belly buttons are displayed in various ways. There is a drop down to pick subject and associated demographic data. Three chart display each individual's data: bar chart-top 10 bacteria found in the cultures, gauge chart-number of self reported belly button washings per week, and bubble chart-number of all bacteria found in the belly button sample. Size of bubbles are relative to the number of samples. Dashboard was made mobile responsive.
