@@ -130,8 +130,10 @@ function buildCharts(sample) {
       yaxis : {text: `OTU ${top10Id}`}
      
     };
+
+    var config = {responsive: true} ;
   //   // 10. Use Plotly to plot the data with the layout. 
-  Plotly.newPlot("bar", barData, barLayout);
+  Plotly.newPlot("bar", barData, barLayout, config);
 
 // 1. Create the trace for the bubble chart.
 var trace2 = 
@@ -158,8 +160,9 @@ var trace2 =
         xaxis: { title: {text: 'OTU ID'}}
     };
   
+    var config = {responsive: true} ;
       // 3. Use Plotly to plot the data with the layout.
-    Plotly.newPlot("bubble", bubbleData, bubbleLayout); 
+    Plotly.newPlot("bubble", bubbleData, bubbleLayout, config); 
 
     var metadata = data.metadata;
     var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
@@ -192,8 +195,9 @@ var trace2 =
 //     // 5. Create the layout for the gauge chart.
     var gaugeLayout = { width: 600, height: 500, margin: { t: 0, b: 0 } };
 
+    var config = {responsive: true} ;
 //     // 6. Use Plotly to plot the gauge data and layout.
-    Plotly.newPlot("gauge", gaugeData, gaugeLayout);
+    Plotly.newPlot("gauge", gaugeData, gaugeLayout, config);
 
   
   })};
