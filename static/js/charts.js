@@ -114,9 +114,13 @@ function buildCharts(sample) {
         x: top10Value, 
         y: topIdLabel,
         text: top10Label,
-        type: "bar" ,
+        type: "bar",
         orientation: "h",
-        hoverinfo: 'none'
+        hoverinfo: 'none',
+        marker: {
+          color: 'rgb(49,145,193)'
+          }
+      
     } ;
 
     barData=[trace1] ;
