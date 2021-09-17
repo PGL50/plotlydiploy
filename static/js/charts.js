@@ -140,7 +140,10 @@ var trace2 =
         color: otuId[0],
         opacity: 0.5,
         size: sampleValue[0],
-        colorscale : 'Rainbow'
+        colorscale : 'Rainbow',
+        hovertemplate: '<i>Price</i>: ${top10Label}' +
+        '<br><b>X</b>: ${sampleValue}<br>' +
+        '<b>${otuLabel}</b>'
           }
     } ;
 
