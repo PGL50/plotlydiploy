@@ -131,7 +131,9 @@ function buildCharts(sample) {
      
     };
 
+     // Make mobile repsonsive
     var config = {responsive: true} ;
+
   //   // 10. Use Plotly to plot the data with the layout. 
   Plotly.newPlot("bar", barData, barLayout, config);
 
@@ -160,6 +162,7 @@ var trace2 =
         xaxis: { title: {text: 'OTU ID'}}
     };
   
+    // Make mobile repsonsive
     var config = {responsive: true} ;
       // 3. Use Plotly to plot the data with the layout.
     Plotly.newPlot("bubble", bubbleData, bubbleLayout, config); 
@@ -195,7 +198,9 @@ var trace2 =
 //     // 5. Create the layout for the gauge chart.
     var gaugeLayout = { width: 500, height: 500, margin: { t: 0, b: 0 } };
 
+        // Make mobile repsonsive
     var config = {responsive: true} ;
+    
 //     // 6. Use Plotly to plot the gauge data and layout.
     Plotly.newPlot("gauge", gaugeData, gaugeLayout, config);
 
