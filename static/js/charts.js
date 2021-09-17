@@ -17,7 +17,6 @@ function init() {
 
     // Use the first sample from the list to build the initial plots
     var firstSample = sampleNames[0];
-    // console.log(sampleNames); 
     buildCharts(firstSample);
     buildMetadata(firstSample);
   });
@@ -41,7 +40,6 @@ function buildMetadata(sample) {
     var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
     var result = resultArray[0];
 
-    // console.log(result);    
     // Use d3 to select the panel with id of `#sample-metadata`
     var PANEL = d3.select("#sample-metadata");
 
@@ -64,15 +62,12 @@ function buildCharts(sample) {
   d3.json("samples.json").then((data) => {
     // 3. Create a variable that holds the samples array. 
       var samples = data.samples;
-      // console.log(samples) ;
 
     // 4. Create a variable that filters the samples for the object with the desired sample number.
     var selectedSample = samples.filter(sampleObj => sampleObj.id == sample);
-  
-    // console.log(selectedSample) ;
 
     //  5. Create a variable that holds the first sample in the array.
-    // var firstSample = samples[0];
+    var firstSample = samples[0];
     // console.log(firstSample) ;
 
     // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
@@ -80,32 +75,26 @@ function buildCharts(sample) {
     otuLabel = selectedSample.map(sampleObj => sampleObj.otu_labels);
     sampleValue = selectedSample.map(sampleObj => sampleObj.sample_values);
     
-    // console.log(otuId) ;
-    // console.log(otuLabel) ;
-    // console.log(sampleValue) ;
-
 
     // 7. Create the yticks for the bar chart.
     // Hint: Get the the top 10 otu_ids and map them in descending order  
     //  so the otu_ids with the most bacteria are last. 
-
-    // yticks = 
 
     top10Id = otuId[0].slice(0,10).reverse()
     // console.log(top10Id)
 
 
   // Add OTU to the ID's for bar chart label
+   // yticks = 
     topIdLabel = [] ;
     for (var i = 0; i < top10Id.length; i++){
       topIdLabel[i] = "OTU " + top10Id[i]
     }
-    // console.log(topIdLabel)
 
     top10Label = otuLabel[0].slice(0,10).reverse()
-    // console.log(top10Label)
+
     top10Value = sampleValue[0].slice(0,10).reverse()
-    // console.log(top10Value)
+
 
     // // 8. Create the trace for the bar chart. 
 
@@ -116,7 +105,6 @@ function buildCharts(sample) {
         text: top10Label,
         type: "bar",
         orientation: "h",
-        hoverinfo: 'none',
         marker: {
           color: 'rgb(49,145,193)'
           }
@@ -170,7 +158,6 @@ var trace2 =
     var metadata = data.metadata;
     var resultArray = metadata.filter(sampleObj => sampleObj.id == sample);
     var result = resultArray[0];
-    // console.log(result);  
 
     // 4. Create the trace for the gauge chart.
 
