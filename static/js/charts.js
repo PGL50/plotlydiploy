@@ -120,7 +120,6 @@ function buildCharts(sample) {
         marker: {
           color: 'rgb(49,145,193)'
           }
-      
     } ;
 
     barData=[trace1] ;
